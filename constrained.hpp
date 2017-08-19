@@ -26,12 +26,12 @@ public:
    {
    }
 
-   inline constrained(const T _x)
+   inline constrained(const T x)
    {
-      operator=(_x);
+      operator=(x);
    }
 
-   constrained<T, Limits>& operator=( const T _x )
+   constrained<T, Limits>& operator=(const T _x)
    {
       if (_x >= Limits::Min && _x <= Limits::Max) {
          x = _x;
