@@ -39,7 +39,7 @@ public:
       if (_x >= Limits::Min && _x <= Limits::Max) {
          x = _x;
       } else {
-         throw std::range_error("Value is not within range");
+         throw std::domain_error("Value is not within range");
       }
 #endif
 
