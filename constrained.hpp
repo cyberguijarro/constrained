@@ -22,22 +22,26 @@ private:
    T x;
 
 public:
-   inline constrained() : x(Limits::Min)
+   constrained() : x(Limits::Min)
    {
    }
 
-   inline constrained(const T x)
+   constrained(const T x)
    {
       operator=(x);
    }
 
    constrained<T, Limits>& operator=(const T _x)
    {
+#ifndef NDEBUG
+      x = _x;
+#else
       if (_x >= Limits::Min && _x <= Limits::Max) {
          x = _x;
       } else {
          throw std::range_error("Value is not within range");
       }
+#endif
 
       return *this;
    }
