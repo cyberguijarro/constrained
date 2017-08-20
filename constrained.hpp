@@ -22,21 +22,21 @@ private:
    T x;
 
 public:
-   constrained() noexcept : x(Limits::Min)
+   constexpr constrained() noexcept : x(Limits::Min)
    {
    }
 
-   constrained(const T x) noexcept
+   constexpr constrained(const T x) noexcept
    {
       operator=(x);
    }
 
-   constrained<T, Limits>& operator=(const T _x)
+   constexpr constrained<T, Limits>& operator=(const T _x)
 #ifdef NDEBUG
       noexcept
 #endif
    {
-#ifndef NDEBUG
+#ifdef NDEBUG
       x = _x;
 #else
       if (_x >= Limits::Min && _x <= Limits::Max) {
@@ -49,7 +49,7 @@ public:
       return *this;
    }
 
-   operator T() const noexcept
+   constexpr operator T() const noexcept
    {
       return x;
    }
