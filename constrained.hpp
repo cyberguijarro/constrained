@@ -22,10 +22,6 @@ private:
    T x;
 
 public:
-   constexpr constrained() noexcept : x(Limits::Min)
-   {
-   }
-
    constexpr constrained(const T x) noexcept
    {
       operator=(x);
